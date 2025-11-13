@@ -4,12 +4,10 @@ const express = require('express');
 const cors = require('cors'); 
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
-<<<<<<< HEAD
 const path = require("path");
 const cors = require('cors');
-=======
+
 const modelRoutes = require("./routes/modelRoutes");
->>>>>>> bcff797 (Add Model API: POST / GET endpoints for casting models)
 
 
 const app = express();
