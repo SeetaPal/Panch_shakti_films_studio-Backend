@@ -1,13 +1,27 @@
 
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors'); 
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
+<<<<<<< HEAD
 const path = require("path");
 const cors = require('cors');
+=======
+const modelRoutes = require("./routes/modelRoutes");
+>>>>>>> bcff797 (Add Model API: POST / GET endpoints for casting models)
 
 
 const app = express();
+
+// ✅ Proper CORS setup
+app.use(cors({
+  origin: "http://localhost:5173",  // your React app URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"], // ✅ important
+}));
+
+
 app.use(express.json());
 app.use(cors());
 
@@ -17,6 +31,7 @@ connectDB();
 
 // ✅ API Routes
 app.use('/api/auth', authRoutes);
+app.use("/api/models", modelRoutes);
 
 // ✅ Serve React build (static files)
 app.use(express.static(path.join(__dirname, "../frontend")));
