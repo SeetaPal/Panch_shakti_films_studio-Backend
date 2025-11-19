@@ -1,7 +1,6 @@
 
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors'); 
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const path = require("path");
@@ -34,14 +33,7 @@ app.use("/api/models", modelRoutes);
 // ✅ Serve React build (static files)
 app.use(express.static(path.join(__dirname, "../frontend")));
 
-// ✅ For React Router: handle all other routes
-// app.get('/', (req, res) => {
-//   res.send('Welcome to Panch Shakti Films Studio API 🎬');
-// });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend", "index.html"));
-});
 
 // ✅ Server Port
 
