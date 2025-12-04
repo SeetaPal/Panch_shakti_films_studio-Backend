@@ -7,6 +7,7 @@ const path = require("path");
 const cors = require('cors');
 
 const modelRoutes = require("./routes/modelRoutes");
+const contactRoutes = require("./routes/contactRoutes");
 
 
 const app = express();
@@ -28,6 +29,9 @@ connectDB();
 
 // ✅ API Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/contact', contactRoutes);
+
+
 app.use("/api/models", modelRoutes);
 
 // ✅ Serve React build (static files)
